@@ -112,8 +112,6 @@ This repository contains a collection of custom keybindings and commands for Vim
 
 ---
 
-## Installation
 
-To use these keybindings in your Vim or Neovim setup, simply add the configuration to your `init.vim` or `init.lua` file.
 
 ```vim
