@@ -98,8 +98,8 @@ This repository contains a collection of custom keybindings and commands for Vim
 - `<leader>lg` => Open LazyGit
 - `]h` => Go to the next Git hunk
 - `[h` => Go to the previous Git hunk
-- `<leader>hs` => Stage the current hunk
-- `<leader>hr` => Reset the current hunk
+- `<leader>hs` => Stage the current hunk in n/v mode
+- `<leader>hr` => Reset the current hunk in n/v mdoe
 - `<leader>hS` => Stage the entire buffer
 - `<leader>hR` => Reset the entire buffer
 - `<leader>hu` => Undo the staged hunk
