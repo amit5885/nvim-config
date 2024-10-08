@@ -111,7 +111,3 @@ This repository contains a collection of custom keybindings and commands for Vim
 - `ih` => Select a Git hunk (in visual mode)
 
 ---
-
-
-
-```vim
