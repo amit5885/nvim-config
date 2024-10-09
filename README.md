@@ -6,6 +6,7 @@ This repository contains a collection of custom keybindings and commands for Vim
 
 ### General Keymaps
 - `i`, `jk` => Exit Insert Mode
+- `v`, `<leader>q` => Exit Visual Mode
 -  `/` => Forward Search
 -  `?` => Backward Search
 - `<leader>nh` => Clear search highlight
