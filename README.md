@@ -17,6 +17,7 @@ This repository contains a collection of custom keybindings and commands for Vim
 - `n`, `<leader>y` => yank to system clipboard
 - `v`, `<leader>y` => yank to system clipboard
 - `n`, `<leader>Y` => yank to system clipboard
+- `n`, `gcc` => line comment
 
 ### Split Management
 - `<leader>sv` => Split vertically
