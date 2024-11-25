@@ -1,37 +1,29 @@
 return {
 	{
-		"folke/tokyonight.nvim",
+		"rose-pine/neovim",
 		priority = 1000,
 		config = function()
 			vim.cmd("highlight clear")
 			-- Enable true colors
 			vim.opt.termguicolors = true
 
-			-- Configure Tokyonight theme
-			require("tokyonight").setup({
-				transparent = true,
-				styles = {
-					sidebars = "transparent",
-					floats = "transparent",
-				},
-				on_highlights = function(hl, c)
-					hl.Keyword = { fg = "#00ffff" }
-					hl.Statement = { fg = "#ffff00" }
-					hl.Function = { fg = "#00ffff" }
-					hl.String = { fg = "#ff00ff" }
-					hl.Comment = { fg = "#00ff00" }
-					hl.Operator = { fg = "#ffff00" }
-					hl.Type = { fg = "#0065ff" } -- int, string => blue
-					hl.Constant = { fg = "#ff00ff" } -- true, false, nill
-					hl.Number = { fg = "#ff00ff" }
-					hl.Special = { fg = "#ffff00" }
-				end,
+			-- Configure Rose Pine theme
+			require("rose-pine").setup({
+				-- Rose Pine options can be set here
+				variant = "main", -- "main", "moon", "dawn"
+				dark_variant = "main", -- "main", "moon", "dawn"
+				disable_background = true, -- Set to true for transparent background
+				-- You can add custom highlights if needed:
+				-- on_highlights = function(hl, c)
+				--   hl.Keyword = { fg = "#ff00ff" }
+				--   hl.Function = { fg = "#00ffff" }
+				-- end,
 			})
 
 			-- Load colorscheme
-			vim.cmd("colorscheme tokyonight")
+			vim.cmd("colorscheme rose-pine")
 
-			-- Set all line numbers to yellow
+			-- -- Set all line numbers to yellow
 			vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffff00", bold = true })
 			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffff00", bold = true })
 
