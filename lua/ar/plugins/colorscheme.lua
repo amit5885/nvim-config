@@ -1,14 +1,15 @@
 return {
 	{
-		"rose-pine/neovim",
+		"samharju/synthweave.nvim",
+		--"rose-pine/neovim",
 		priority = 1000,
 		config = function()
 			vim.cmd("highlight clear")
 			-- Enable true colors
 			vim.opt.termguicolors = true
 
-			-- Configure Rose Pine theme
-			require("rose-pine").setup({
+			-- Configure Rose Pine theme ("rose-pine")
+			require("synthweave").setup({
 
 				-- Rose Pine options can be set here
 				variant = "auto", -- "main", "moon", "dawn"
@@ -64,11 +65,11 @@ return {
 			})
 
 			-- Load colorscheme
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme synthweave")
 
 			-- -- Set all line numbers to yellow
-			vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffff00", bold = true })
-			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffff00", bold = true })
+			-- vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffff00", bold = true })
+			-- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffff00", bold = true })
 
 			-- Function to ensure highlights are applied
 			local function apply_custom_highlights()
@@ -76,6 +77,8 @@ return {
 				vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 				vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" })
 				vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+				vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" }) -- For empty areas
+				vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 			end
 			-- Apply custom highlights
 			apply_custom_highlights()

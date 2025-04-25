@@ -1,0 +1,82 @@
+Normal Mode
+
+    h : Move left
+    j : Move down
+    k : Move up
+    l : Move right
+    gg : Go to the top of the file
+    G : Go to the bottom of the file
+    w : Move forward by word
+    W: move forward to next white Space
+    b : Move backward by word
+    B : Move backward by white space
+    0 : Go to the beginning of the line
+    $ : Go to the end of the line
+    yy/Y : Copy (yank) the current line
+    dd/D : Cut (delete) the current line
+    p : Paste after the cursor
+    u : Undo
+    Ctrl + r : Redo
+    f, char : goes forward of the char. ex: f, "("
+    F, char : goes backward of the char. 
+    t, char : goes forward onto the char. ex: t, "e"
+    T, char : goes backward onto the char. ex: 
+    , : goes to forward next char
+    ; : goes to backward next char 
+    d, $ : delete till the end from the cursor.
+    df( : delete till the first "(" char.
+    dt( : delete onto the first "(" char.
+    yt( : copy onto the first "(" char.
+    :100 : goto to line number 100
+    /search : search forward
+    ?search : search backward
+    after search press n : goes to next result
+    after search press N : goes to previous result
+    
+    on the word and press * : to search the word and press n/N for goto results
+    yiW : copy all till the next white space
+    yiw : copy all till the next word
+    
+    da{ : delete all along the "{"
+    di{ : delete inside the "{"
+    ca{ : delete all along the "{" and enter insert mode
+    ci{ : delete all inside the "{" and enter insert mode
+    
+    yap: yank paragraph along whitespace
+    yip: 
+    dap: delete paragraph along whitespace
+    dip: 
+Insert Mode
+
+    Esc : Exit to Normal mode
+    Ctrl + o : Execute one Normal mode command and return to Insert mode
+
+Visual Mode
+
+    v : Start visual selection
+    V : Start line-wise visual selection
+    Ctrl + v : Start block-wise visual selection (
+    y : Yank the selection
+    d : Delete the selection
+    vt( : select onto the first "(" char.
+    vi( : select all within the "("
+    va( : select all around the "("
+    vap : select paragraph along whitespace
+    vip : select all inside paragraph
+    o : transfer the selected cursor either side in vertical 
+    % : in pair symbol like (), {}, <>, [], to transfer cursor to either side 
+
+Command Mode
+
+    : : Enter command-line mode
+    :w : Save the file
+    :q : Quit
+    :wq : Save and quit
+    :e filename : Open a file
+
+Miscellaneous
+
+    Ctrl + f : Scroll down one page
+    Ctrl + b : Scroll up one page
+    Ctrl + d : Scroll down half a page
+    Ctrl + u : Scroll up half a page
