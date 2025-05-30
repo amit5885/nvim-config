@@ -120,4 +120,7 @@ This repository contains a collection of custom keybindings and commands for Vim
 - `<leader>hD` => Diff the hunk with the previous state
 - `ih` => Select a Git hunk (in visual mode)
 
+### Code Folding
+- `n`, `za` => toggle code folding
+
 ---
