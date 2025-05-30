@@ -5,7 +5,6 @@ local opt = vim.opt
 opt.relativenumber = true
 opt.number = true
 
-
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
@@ -23,7 +22,6 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.cursorline = false -- highlight the current cursor line
 
 -- appearance
-
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = false
@@ -42,3 +40,21 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- Folding setup
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldnestmax = 10
+opt.foldcolumn = "0"
+
+-- Fillchars: override all fold visuals
+opt.fillchars = {
+	fold = " ", -- No line in the fold
+	foldopen = "", -- Custom open symbol (or use "-" if you prefer)
+	foldclose = "", -- Custom closed symbol (or use "+" if you prefer)
+	foldsep = " ", -- No vertical bars between levels
+	eob = " ", -- Hide ~ on empty lines
+}

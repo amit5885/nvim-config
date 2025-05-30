@@ -21,6 +21,10 @@ return {
 			autotag = {
 				enable = true,
 			},
+			-- Enable folding
+			folding = {
+				enable = true,
+			},
 			-- ensure these language parsers are installed
 			ensure_installed = {
 				"json",
