@@ -12,6 +12,7 @@ This repository contains a collection of custom keybindings and commands for Vim
 - `<leader>nh` => Clear search highlight
 - `<leader>+` => Increment
 - `<leader>-` => Decrement
+- `n`, `di`, `"/(/{/[` => delete inside given character
 - `n`, `J/K` =>  move selected line/block of text in visual mode
 - `x`, `<leader>p` => paste form clipboard
 - `n`, `<leader>y` => yank to system clipboard
