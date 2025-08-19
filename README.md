@@ -124,4 +124,6 @@ This repository contains a collection of custom keybindings and commands for Vim
 ### Code Folding
 - `n`, `za` => toggle code folding
 
+### AI Suggestion
+- `:CodeiumToggle` => toggle AI ON/OFF
 ---
