@@ -46,4 +46,95 @@ return {
 			vim.opt.statusline:append(" %{%v:lua.GetCodeiumStatus()%}")
 		end,
 	},
+	-- {
+	-- 	"supermaven-inc/supermaven-nvim",
+	-- 	config = function()
+	-- 		require("supermaven-nvim").setup({
+	-- 			keymaps = {
+	-- 				accept_suggestion = "<Tab>",
+	-- 				clear_suggestion = "<C-x>",
+	-- 				accept_word = "<C-j>",
+	-- 			},
+	-- 			ignore_filetypes = {
+	-- 				TelescopePrompt = true,
+	-- 				DressingInput = true,
+	-- 			},
+	-- 			color = {
+	-- 				suggestion_color = "#888888", -- similar to your codeium color
+	-- 				cterm = 8,
+	-- 			},
+	-- 			log_level = "info", -- set to "off" to disable logging completely
+	-- 			disable_inline_completion = false,
+	-- 			disable_keymaps = false,
+	-- 		})
+
+	-- 		-- Cycle through suggestions (similar to Codeium's cycle functionality)
+	-- 		vim.keymap.set("i", "<c-;>", function()
+	-- 			vim.cmd("SupermavenUseSuggestion 1") -- next suggestion
+	-- 		end, { expr = false, desc = "Next Supermaven suggestion" })
+
+	-- 		vim.keymap.set("i", "<c-,>", function()
+	-- 			vim.cmd("SupermavenUseSuggestion -1") -- previous suggestion
+	-- 		end, { expr = false, desc = "Previous Supermaven suggestion" })
+
+	-- 		-- Optional: Set filetypes to disable Supermaven (similar to Codeium)
+	-- 		-- Already handled in ignore_filetypes above
+
+	-- 		-- Optional: Add a command to toggle Supermaven
+	-- 		vim.api.nvim_create_user_command("SupermavenToggle", function()
+	-- 			local api = require("supermaven-nvim.api")
+	-- 			if api.is_running() then
+	-- 				vim.cmd("SupermavenStop")
+	-- 				print("Supermaven: Disabled")
+	-- 			else
+	-- 				vim.cmd("SupermavenStart")
+	-- 				print("Supermaven: Enabled")
+	-- 			end
+	-- 		end, { desc = "Toggle Supermaven" })
+
+	-- 		-- Optional: Status line integration
+	-- 		function _G.GetSupermavenStatus()
+	-- 			local api = require("supermaven-nvim.api")
+	-- 			if api.is_running() then
+	-- 				return "SM"
+	-- 			else
+	-- 				return ""
+	-- 			end
+	-- 		end
+	-- 		vim.opt.statusline:append(" %{%v:lua.GetSupermavenStatus()%}")
+	-- 	end,
+	-- },
+	{
+		"NickvanDyke/opencode.nvim",
+		dependencies = { "folke/snacks.nvim" },
+		opts = {
+			auto_fallback_to_embedded = false,
+		},
+		keys = {
+			{
+				"<leader>oa",
+				function()
+					require("opencode").ask()
+				end,
+				desc = "Ask opencode",
+				mode = "n",
+			},
+			{
+				"<leader>oa",
+				function()
+					require("opencode").ask("@selection: ")
+				end,
+				desc = "Ask opencode about selection",
+				mode = "v",
+			},
+			{
+				"<leader>op",
+				function()
+					require("opencode").select_prompt()
+				end,
+				desc = "Select prompt",
+				mode = { "n", "v" },
+			},
+		},
+	},
 }

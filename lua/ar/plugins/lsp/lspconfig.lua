@@ -11,8 +11,6 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local keymap = vim.keymap -- for conciseness
@@ -63,60 +61,75 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- Setup handlers after everything is loaded
-		vim.api.nvim_create_autocmd("VimEnter", {
-			callback = function()
-				local mason_lspconfig_ok, mason_lspconfig_loaded = pcall(require, "mason-lspconfig")
-				if mason_lspconfig_ok then
-					mason_lspconfig_loaded.setup_handlers({
-						-- default handler for installed servers
-						function(server_name)
-							lspconfig[server_name].setup({
-								capabilities = capabilities,
-							})
-						end,
-						["graphql"] = function()
-							-- configure graphql language server
-							lspconfig["graphql"].setup({
-								capabilities = capabilities,
-								filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
-							})
-						end,
-						["emmet_ls"] = function()
-							-- configure emmet language server
-							lspconfig["emmet_ls"].setup({
-								capabilities = capabilities,
-								filetypes = {
-									"html",
-									"typescriptreact",
-									"javascriptreact",
-									"css",
-									"sass",
-									"scss",
-									"less",
-								},
-							})
-						end,
-						["lua_ls"] = function()
-							-- configure lua server (with special settings)
-							lspconfig["lua_ls"].setup({
-								capabilities = capabilities,
-								settings = {
-									Lua = {
-										-- make the language server recognize "vim" global
-										diagnostics = {
-											globals = { "vim" },
-										},
-										completion = {
-											callSnippet = "Replace",
-										},
-									},
-								},
-							})
-						end,
-					})
+		-- Setup LSP servers with proper mason-lspconfig integration
+		local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+		if mason_lspconfig_ok then
+			-- Get installed servers
+			local installed_servers = mason_lspconfig.get_installed_servers()
+
+			-- Define server-specific configurations
+			local server_configs = {
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+							completion = { callSnippet = "Replace" },
+						},
+					},
+				},
+				emmet_ls = {
+					filetypes = {
+						"html",
+						"typescriptreact",
+						"javascriptreact",
+						"css",
+						"sass",
+						"scss",
+						"less",
+					},
+				},
+				graphql = {
+					filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
+				},
+				tailwindcss = {
+					filetypes = {
+						"html",
+						"css",
+						"scss",
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+						"vue",
+						"svelte",
+					},
+				},
+				ts_ls = {
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+					},
+				},
+			}
+
+			-- Setup each installed server
+			for _, server_name in ipairs(installed_servers) do
+				local server_config = { capabilities = capabilities }
+
+				-- Merge server-specific config if it exists
+				if server_configs[server_name] then
+					server_config = vim.tbl_deep_extend("force", server_config, server_configs[server_name])
 				end
-			end,
-		})
+
+				-- Setup the server
+				if lspconfig[server_name] then
+					lspconfig[server_name].setup(server_config)
+				end
+			end
+		else
+			vim.notify("mason-lspconfig not available, LSP servers may not be configured", vim.log.levels.WARN)
+		end
 	end,
 }

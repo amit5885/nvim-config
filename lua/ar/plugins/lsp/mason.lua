@@ -1,5 +1,6 @@
 return {
 	"williamboman/mason.nvim",
+	lazy = false,
 	priority = 1000,
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
@@ -42,6 +43,8 @@ return {
 				"jsonls",
 				"solidity",
 			},
+			-- auto-install configured servers (with lspconfig)
+			automatic_installation = true,
 		})
 
 		mason_tool_installer.setup({
@@ -52,6 +55,8 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
+				"goimports", -- go imports formatter
+				"rustfmt", -- rust formatter
 			},
 		})
 	end,
