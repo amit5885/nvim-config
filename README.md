@@ -126,4 +126,7 @@ This repository contains a collection of custom keybindings and commands for Vim
 
 ### AI Suggestion
 - `:CodeiumToggle` => toggle AI ON/OFF
+
+### OpenCode
+- `<leader>oa` => ask OpenCode
 ---
