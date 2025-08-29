@@ -17,6 +17,7 @@ return {
 				-- Disable vim's regex highlighting in favor of tree-sitter
 				additional_vim_regex_highlighting = false,
 			},
+
 			-- enable indentation
 			indent = { enable = true },
 			-- enable autotagging (w/ nvim-ts-autotag plugin)
@@ -64,6 +65,11 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
+
+			modules = {},
+			sync_install = false,
+			ignore_install = {},
+			auto_install = true,
 		})
 	end,
 }
